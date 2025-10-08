@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmb3ia3xlj3uy"]
+
+[ext_resource type="Script" uid="uid://cti2knpv118e2" path="res://addons/statecafe/panel/state_panel.gd" id="1_scaffold_gd"]
+[ext_resource type="Texture2D" uid="uid://dd2o48oqvi2og" path="res://addons/statecafe/icons/arrow-big-up-dash.svg" id="2_ck88h"]
+[ext_resource type="Texture2D" uid="uid://df2ofr4sabd76" path="res://addons/statecafe/icons/book-open-text.svg" id="4_u21qr"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2no5w"]
+color = Color(0.35686275, 0.5803922, 0.7764706, 1)
+thickness = 3
+
+[node name="StatePanel" type="VBoxContainer"]
+custom_minimum_size = Vector2(340, 0)
+offset_right = 340.0
+offset_bottom = 46.0
+size_flags_vertical = 0
+script = ExtResource("1_scaffold_gd")
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_2no5w")
+
+[node name="HeaderButton" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+text = "StateCafe"
+icon = ExtResource("2_ck88h")
+alignment = 0
+icon_alignment = 2
+
+[node name="CollapsibleContent" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CollapsibleContent"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DocsButton" type="Button" parent="CollapsibleContent/HBoxContainer"]
+custom_minimum_size = Vector2(78, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Docs"
+icon = ExtResource("4_u21qr")
+alignment = 0
+
+[node name="HSeparator" type="HSeparator" parent="CollapsibleContent"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="CollapsibleContent"]
+layout_mode = 2
+size_flags_vertical = 0
+current_tab = 0
+tabs_rearrange_group = 0
+
+[node name="Tab1" type="VBoxContainer" parent="CollapsibleContent/TabContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+metadata/_tab_index = 0
+
+[node name="SaveFeedbackLabel" type="Label" parent="CollapsibleContent"]
+visible = false
+layout_mode = 2
+text = "Saved!"
+horizontal_alignment = 1
+
+[node name="SaveFeedbackTimer" type="Timer" parent="CollapsibleContent"]
+wait_time = 1.5
+one_shot = true
