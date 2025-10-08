@@ -84,7 +84,7 @@ Isso já melhora drasticamente a clareza sem a necessidade de ferramentas comple
 3.  Conecta os nós visualmente para definir as transições.
 4.  Salva o grafo, que atualiza as referências dentro dos `Resource`s.
 
-![Exemplo de Grafo](https://i.imgur.com/e2Xb02y.png) *<-- Imagem conceitual de um editor de grafos para o StateCafe.*
+![Exemplo de Grafo](https://i.imgur.com/e2Xb02p.png) *<-- Imagem conceitual de um editor de grafos para o StateCafe.*
 
 ---
 

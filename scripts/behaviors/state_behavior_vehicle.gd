@@ -1,0 +1,3 @@
+@tool
+extends StateBehavior
+class_name StateBehaviorVehicle
