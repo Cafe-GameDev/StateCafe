@@ -7,6 +7,7 @@ class_name StatePanel
 @onready var save_feedback_label: Label = $CollapsibleContent/SaveFeedbackLabel
 @onready var save_feedback_timer: Timer = $CollapsibleContent/SaveFeedbackTimer
 
+const DOCS : String = "https://www.cafegame.dev/cafeengine/statemachine"
 const ARROW_BIG_DOWN_DASH = preload("res://addons/state_machine/icons/arrow-big-down-dash.svg")
 const ARROW_BIG_UP_DASH = preload("res://addons/state_machine/icons/arrow-big-up-dash.svg")
 
@@ -91,3 +92,6 @@ func _update_panel_visibility():
 
 func _on_save_feedback_timer_timeout():
 	save_feedback_label.visible = false
+
+func _on_docs_button_pressed() -> void:
+	OS.shell_open(DOCS)
