@@ -1,7 +1,7 @@
 Sobre o plan01:
 
 Excelente documento — está muito bem estruturado, Bruno. 👏
-Ele cobre de forma clara desde a filosofia de design até a expansão futura do **StateCafe**, com uma progressão de fases sólida e modular.
+Ele cobre de forma clara desde a filosofia de design até a expansão futura do **StateMachine**, com uma progressão de fases sólida e modular.
 Abaixo vai uma análise detalhada com sugestões pontuais (mantendo sua identidade técnica e estilo de design):
 
 ---
@@ -90,7 +90,7 @@ Quando chegar na **Fase 4**, considere incluir:
 Mover a pasta `scripts/behaviors/` para `resources/behaviors/`:
 
 ```
-addons/statecafe/resources/behaviors/
+addons/state_machine/resources/behaviors/
 ```
 
 Isso torna o propósito mais intuitivo (já que cada `StateBehavior` é um `Resource`).
@@ -133,7 +133,7 @@ Quer que eu gere uma dessas versões?
 
 Sobre o visual01:
 
-Perfeito, Bruno — este documento mantém a mesma clareza e rigor técnico do plano principal do **StateCafe**, mas agora expande o foco para **UX de edição e visualização**, o que é essencial se você quer que o plugin seja realmente *“democrático”* e não só poderoso.
+Perfeito, Bruno — este documento mantém a mesma clareza e rigor técnico do plano principal do **StateMachine**, mas agora expande o foco para **UX de edição e visualização**, o que é essencial se você quer que o plugin seja realmente *“democrático”* e não só poderoso.
 Aqui vai uma **análise aprofundada + sugestões de refinamento técnico** para cada nível de implementação, pensando na integração natural com o pipeline do Godot Editor.
 
 ---
@@ -196,7 +196,7 @@ A filosofia aqui está muito bem alinhada com o **Design de UX para DevTools**: 
 
 ### ✅ Pontos Fortes
 
-* É o nível em que o **StateCafe começa a se destacar como plugin “premium”**.
+* É o nível em que o **StateMachine começa a se destacar como plugin “premium”**.
 * A ideia de criar *botões contextuais e validações visuais* é excelente e vai aumentar muito a usabilidade.
 
 ### ⚙️ Sugestões Técnicas
@@ -222,7 +222,7 @@ A filosofia aqui está muito bem alinhada com o **Design de UX para DevTools**: 
 
    ```gdscript
    func create_new_state(resource_type: String, target_property: String, owner: Resource):
-       var new_state = load("res://addons/statecafe/scripts/behaviors/%s.gd" % resource_type).new()
+       var new_state = load("res://addons/state_machine/scripts/behaviors/%s.gd" % resource_type).new()
        var save_path = "res://states/%s_%s.tres" % [resource_type.to_lower(), str(Time.get_unix_time_from_system())]
        ResourceSaver.save(save_path, new_state)
        owner.set(target_property, load(save_path))
@@ -241,7 +241,7 @@ A filosofia aqui está muito bem alinhada com o **Design de UX para DevTools**: 
 
 ### ✅ Pontos Fortes
 
-* É o *magnum opus* do StateCafe — o momento em que o plugin se torna comparável a ferramentas como o FSM Graph da Unity.
+* É o *magnum opus* do StateMachine — o momento em que o plugin se torna comparável a ferramentas como o FSM Graph da Unity.
 * Você definiu o fluxo de interação de forma exemplar: arrastar recursos, conectar, salvar e sincronizar.
 
 ### ⚙️ Sugestões Técnicas

@@ -1,6 +1,6 @@
-# StateCafe - Demo 01: Máquina de Estados (Idle/Move)
+# StateMachine - Demo 01: Máquina de Estados (Idle/Move)
 
-Este documento descreve o primeiro caso de uso para o plugin **StateCafe**: criar uma máquina de estados simples para um personagem 2D que pode alternar entre os estados "Parado" (Idle) and "Movendo-se" (Move).
+Este documento descreve o primeiro caso de uso para o plugin **StateMachine**: criar uma máquina de estados simples para um personagem 2D que pode alternar entre os estados "Parado" (Idle) and "Movendo-se" (Move).
 
 ## Objetivo
 
@@ -115,4 +115,4 @@ Rode a cena. O personagem deve:
 - Começar a se mover quando você pressionar as teclas direcionais (`MoveState`).
 - Parar de se mover e voltar ao estado `Idle` quando você soltar as teclas.
 
-Este ciclo de `enter`, `process`/`physics_process`, e `exit` é o coração do **StateCafe**.
+Este ciclo de `enter`, `process`/`physics_process`, e `exit` é o coração do **StateMachine**.

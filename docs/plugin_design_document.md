@@ -1,4 +1,4 @@
-# StateCafe - Plugin Design Document (PDD)
+# StateMachine - Plugin Design Document (PDD)
 
 **Versão do Documento:** 1.0
 **Data:** 2025-10-07
@@ -10,7 +10,7 @@
 
 ### 1.1. Conceito
 
-O **StateCafe** é um framework avançado para Godot Engine 4.x, projetado para simplificar e potencializar a criação de lógicas de comportamento complexas. Ele implementa uma arquitetura de **Máquina de Estados Paralela e em Camadas (Layered/Parallel State Machine)**, onde comportamentos são encapsulados em `Resource`s reutilizáveis.
+O **StateMachine** é um framework avançado para Godot Engine 4.x, projetado para simplificar e potencializar a criação de lógicas de comportamento complexas. Ele implementa uma arquitetura de **Máquina de Estados Paralela e em Camadas (Layered/Parallel State Machine)**, onde comportamentos são encapsulados em `Resource`s reutilizáveis.
 
 ### 1.2. Filosofia
 
@@ -21,7 +21,7 @@ O **StateCafe** é um framework avançado para Godot Engine 4.x, projetado para 
 
 ### 1.3. Política de Versão e Compatibilidade
 
--   **Versão Alvo:** O StateCafe tem como alvo inicial o **Godot 4.5**.
+-   **Versão Alvo:** O StateMachine tem como alvo inicial o **Godot 4.5**.
 -   **Compatibilidade Futura:** O projeto será ativamente mantido para garantir compatibilidade com versões futuras do Godot 4.x.
 -   **Retrocompatibilidade:** Não haverá suporte para versões anteriores ao Godot 4.5, a fim de aproveitar os recursos mais recentes da engine e manter uma base de código limpa e moderna.
 
@@ -76,7 +76,7 @@ O sistema é composto por três elementos centrais que trabalham em conjunto par
 ## 3. Estrutura de Arquivos Proposta
 
 ```
-addons/statecafe/
+addons/state_machine/
 ├── plugin.cfg
 ├── components/
 │   ├── state_component.gd
@@ -105,7 +105,7 @@ addons/statecafe/
 
 ## 4. Catálogo de `StateBehavior`s Propostos
 
-Este documento define uma lista de 30 `StateBehavior`s de alto nível propostos para a biblioteca do **StateCafe**. Cada item representa uma **sub-máquina de estados** completa para um domínio funcional, gerenciando seus próprios micro-estados internamente.
+Este documento define uma lista de 30 `StateBehavior`s de alto nível propostos para a biblioteca do **StateMachine**. Cada item representa uma **sub-máquina de estados** completa para um domínio funcional, gerenciando seus próprios micro-estados internamente.
 
 | # | Nome do Resource (`class_name`) | Função Principal | Micro-Estados Internos (Exemplos) | Estrutura Sugerida |
 |---|---|---|---|---|
@@ -150,11 +150,11 @@ Este documento define uma lista de 30 `StateBehavior`s de alto nível propostos 
 
 ## 5. Arquitetura de Interface (UI)
 
-A interface do StateCafe é dividida em componentes modulares para uma experiência de usuário limpa e focada.
+A interface do StateMachine é dividida em componentes modulares para uma experiência de usuário limpa e focada.
 
 -   **`CafePanel` (O Host da Dock):** Um contêiner simples que fica na dock lateral do editor. Sua única função é abrigar os painéis dos diferentes plugins da suíte CafeEngine.
 
--   **`StatePanel` (O Navegador / Visualizador):** O painel principal do StateCafe, filho do `CafePanel`. Sua responsabilidade é a **visualização e navegação** da máquina de estados.
+-   **`StatePanel` (O Navegador / Visualizador):** O painel principal do StateMachine, filho do `CafePanel`. Sua responsabilidade é a **visualização e navegação** da máquina de estados.
     -   **Duplo Propósito:**
         1.  **Micro-Visão (Nível de Entidade):** Exibe um editor de grafos (`GraphEdit`) para a máquina de estados de um `StateComponent` selecionado na cena.
         2.  **Macro-Visão (Nível de Jogo):** Exibe o grafo da máquina de estados global, gerenciada pelo autoload `StateMachine`.
@@ -215,7 +215,7 @@ A interface do StateCafe é dividida em componentes modulares para uma experiên
 
 -   [ ] **Documentar o Código:** Adicionar comentários claros em todas as classes e funções principais.
 -   [ ] **Criar Documentação Externa:** Escrever guias no formato Markdown na pasta `docs/` do plugin.
--   [ ] **Criar um Projeto Demo Completo:** Montar um pequeno jogo ou cena de exemplo que utilize diversos estados e funcionalidades do StateCafe.
+-   [ ] **Criar um Projeto Demo Completo:** Montar um pequeno jogo ou cena de exemplo que utilize diversos estados e funcionalidades do StateMachine.
 -   **Objetivo:** Garantir que o plugin seja acessível e fácil de aprender para novos usuários.
 
 ---

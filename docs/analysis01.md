@@ -1,4 +1,4 @@
-# Análise da Análise: O Papel Ativo dos Resources no StateCafe
+# Análise da Análise: O Papel Ativo dos Resources no StateMachine
 
 Este documento é uma meta-análise do feedback recebido em `chatgpt.md`, com foco em aprofundar nossa arquitetura para garantir que os `Resource`s sejam tratados como objetos de comportamento ativos, com métodos e sinais, e não apenas como contêineres de dados passivos.
 

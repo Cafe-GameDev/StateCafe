@@ -1,6 +1,6 @@
-# Plano de Desenvolvimento: StateCafe
+# Plano de Desenvolvimento: StateMachine
 
-Este documento detalha o plano de desenvolvimento para o plugin **StateCafe**, um sistema para democratizar a criação e gerenciamento de Máquinas de Estado Finito (FSM) no Godot Engine.
+Este documento detalha o plano de desenvolvimento para o plugin **StateMachine**, um sistema para democratizar a criação e gerenciamento de Máquinas de Estado Finito (FSM) no Godot Engine.
 
 ---
 
@@ -46,7 +46,7 @@ O sistema será composto por três tipos principais de elementos:
 ## 3. Estrutura de Arquivos Proposta
 
 ```
-addons/statecafe/
+addons/state_machine/
 ├── plugin.cfg
 ├── components/
 │   ├── state_component.gd
@@ -110,7 +110,7 @@ addons/statecafe/
 
 -   [ ] **Documentar o Código:** Adicionar comentários claros em todas as classes e funções principais.
 -   [ ] **Criar Documentação Externa:** Escrever guias no formato Markdown na pasta `docs/` do plugin.
--   [ ] **Criar um Projeto Demo Completo:** Montar um pequeno jogo ou cena de exemplo que utilize diversos estados e funcionalidades do StateCafe.
+-   [ ] **Criar um Projeto Demo Completo:** Montar um pequeno jogo ou cena de exemplo que utilize diversos estados e funcionalidades do StateMachine.
 -   **Objetivo:** Garantir que o plugin seja acessível e fácil de aprender para novos usuários.
 
 ---

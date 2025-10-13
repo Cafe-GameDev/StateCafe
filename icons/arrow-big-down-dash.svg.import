@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://db5257d01rp3u"
-path="res://.godot/imported/arrow-big-down-dash.svg-4bb5fffa689bc4c1c8fcbfda1a2aec97.ctex"
+path="res://.godot/imported/arrow-big-down-dash.svg-7865da496cabd4eade1fda8030c0d42c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/statecafe/icons/arrow-big-down-dash.svg"
-dest_files=["res://.godot/imported/arrow-big-down-dash.svg-4bb5fffa689bc4c1c8fcbfda1a2aec97.ctex"]
+source_file="res://addons/state_machine/icons/arrow-big-down-dash.svg"
+dest_files=["res://.godot/imported/arrow-big-down-dash.svg-7865da496cabd4eade1fda8030c0d42c.ctex"]
 
 [params]
 

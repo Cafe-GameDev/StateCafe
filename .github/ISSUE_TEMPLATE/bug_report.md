@@ -1,7 +1,7 @@
 ---
-name: Report de Bug (StateCafe)
-about: Crie um relatório para nos ajudar a melhorar o StateCafe
-labels: bug, statecafe
+name: Report de Bug (StateMachine)
+about: Crie um relatório para nos ajudar a melhorar o StateMachine
+labels: bug, statemachine
 ---
 
 **Descreva o bug**
@@ -18,5 +18,5 @@ Uma descrição clara e concisa do que você esperava que acontecesse.
 
 **Contexto:**
  - Versão do Godot: [ex. 4.5]
- - Versão do StateCafe: [ex. v1.0]
+ - Versão do StateMachine: [ex. v1.0]
  - OS: [ex. Windows, Linux, macOS]

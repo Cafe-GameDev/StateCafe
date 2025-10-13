@@ -1,6 +1,6 @@
 # Catálogo de StateBehaviors de Alto Nível
 
-Este documento define uma lista de 30 `StateBehavior`s de alto nível propostos para a biblioteca do **StateCafe**. Cada item representa uma **sub-máquina de estados** completa para um domínio funcional, gerenciando seus próprios micro-estados internamente.
+Este documento define uma lista de 30 `StateBehavior`s de alto nível propostos para a biblioteca do **StateMachine**. Cada item representa uma **sub-máquina de estados** completa para um domínio funcional, gerenciando seus próprios micro-estados internamente.
 
 ---
 

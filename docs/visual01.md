@@ -1,4 +1,4 @@
-# StateCafe - Visualização e Edição de States
+# StateMachine - Visualização e Edição de States
 
 Este documento explora as estratégias para tornar a criação e edição dos `StateBehavior` resources uma experiência visual e intuitiva, indo além da simples lista de propriedades no Inspector.
 
@@ -84,11 +84,11 @@ Isso já melhora drasticamente a clareza sem a necessidade de ferramentas comple
 3.  Conecta os nós visualmente para definir as transições.
 4.  Salva o grafo, que atualiza as referências dentro dos `Resource`s.
 
-![Exemplo de Grafo](https://i.imgur.com/e2Xb02p.png) *<-- Imagem conceitual de um editor de grafos para o StateCafe.*
+![Exemplo de Grafo](https://i.imgur.com/e2Xb02p.png) *<-- Imagem conceitual de um editor de grafos para o StateMachine.*
 
 ---
 
 ## Conclusão e Recomendação
 
 -   **Fase Inicial:** Devemos focar nos **Níveis 1 e 2**. Eles oferecem um grande ganho de usabilidade com um esforço de desenvolvimento moderado e se encaixam perfeitamente nas Fases 2 e 4 do nosso plano de desenvolvimento principal.
--   **Longo Prazo:** O **Nível 3 (Editor de Grafos)** é o objetivo final que tornaria o StateCafe uma ferramenta de nível profissional. Deve ser planejado como uma feature principal para uma futura versão 2.0, após a base do plugin estar sólida e testada.
+-   **Longo Prazo:** O **Nível 3 (Editor de Grafos)** é o objetivo final que tornaria o StateMachine uma ferramenta de nível profissional. Deve ser planejado como uma feature principal para uma futura versão 2.0, após a base do plugin estar sólida e testada.

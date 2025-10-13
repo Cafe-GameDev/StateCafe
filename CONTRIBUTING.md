@@ -1,6 +1,6 @@
-# Como Contribuir para o StateCafe
+# Como Contribuir para o StateMachine
 
-Obrigado pelo seu interesse em contribuir para o **StateCafe**!
+Obrigado pelo seu interesse em contribuir para o **StateMachine**!
 
 ## Roadmap de Desenvolvimento
 
@@ -9,7 +9,7 @@ Antes de contribuir, é uma boa ideia se familiarizar com nosso plano de desenvo
 ## Reportando Bugs
 
 -   **Verifique issues existentes:** Antes de criar uma nova, veja se o bug já não foi reportado.
--   **Seja Detalhado:** Inclua a versão do Godot, a versão do StateCafe, passos para reproduzir o bug, e o que você esperava que acontecesse.
+-   **Seja Detalhado:** Inclua a versão do Godot, a versão do StateMachine, passos para reproduzir o bug, e o que você esperava que acontecesse.
 
 ## Sugerindo Melhorias
 

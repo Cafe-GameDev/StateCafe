@@ -1,7 +1,7 @@
 ---
-name: Sugestão de Funcionalidade (StateCafe)
-about: Sugira uma ideia para o StateCafe
-labels: enhancement, statecafe
+name: Sugestão de Funcionalidade (StateMachine)
+about: Sugira uma ideia para o StateMachine
+labels: enhancement, statemachine
 ---
 
 **Sua sugestão de funcionalidade está relacionada a um problema? Por favor, descreva.**

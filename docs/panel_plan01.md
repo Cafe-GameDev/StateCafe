@@ -1,6 +1,6 @@
 # Planejamento do StatePanel: Gerenciador Visual de Estados
 
-Este documento detalha a visão e as funcionalidades do `StatePanel`, a interface gráfica central do plugin StateCafe. O painel servirá como uma ferramenta de duplo propósito: para visualizar e gerenciar tanto as máquinas de estado de **entidades individuais** quanto a máquina de estado **global do jogo**.
+Este documento detalha a visão e as funcionalidades do `StatePanel`, a interface gráfica central do plugin StateMachine. O painel servirá como uma ferramenta de duplo propósito: para visualizar e gerenciar tanto as máquinas de estado de **entidades individuais** quanto a máquina de estado **global do jogo**.
 
 ---
 

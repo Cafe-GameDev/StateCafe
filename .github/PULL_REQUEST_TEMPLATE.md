@@ -1,6 +1,6 @@
 ### Descrição
 
-<!-- Descreva claramente as alterações que você fez no StateCafe. -->
+<!-- Descreva claramente as alterações que você fez no StateMachine. -->
 
 ### Tipo de Mudança
 

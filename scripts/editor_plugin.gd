@@ -2,8 +2,8 @@
 extends EditorPlugin
 
 const AUTOLOAD_NAME = "StateMachine"
-const AUTOLOAD_PATH = "res://addons/statecafe/components/state_machine.gd"
-const GROUP_SCENE_PATH = "res://addons/statecafe/panel/state_panel.tscn"
+const AUTOLOAD_PATH = "res://addons/state_machine/components/state_machine.gd"
+const GROUP_SCENE_PATH = "res://addons/state_machine/panel/state_panel.tscn"
 
 var plugin_panel: ScrollContainer
 var group_panel: VBoxContainer
@@ -34,7 +34,7 @@ func _exit_tree():
 func _create_plugin_panel():
 	plugin_panel = get_editor_interface().get_base_control().find_child("CafeEngine", true, false)
 	if plugin_panel:
-		_ensure_group("StateCafe")
+		_ensure_group("StateMachine")
 		return
 
 	plugin_panel = ScrollContainer.new()
@@ -54,7 +54,7 @@ func _create_plugin_panel():
 	plugin_panel.add_child(vbox_container)
 
 	add_control_to_dock(DOCK_SLOT_RIGHT_UL, plugin_panel)
-	_ensure_group("StateCafe")
+	_ensure_group("StateMachine")
 
 func _ensure_group(group_name: String) -> VBoxContainer:
 	if not plugin_panel:
@@ -68,10 +68,10 @@ func _ensure_group(group_name: String) -> VBoxContainer:
 
 	group_panel = content_container.find_child(group_name, false)
 	if group_panel:
-		const SCAFFOLDING_CONFIG_PATH = "res://addons/statecafe/resources/state_config.tres"
+		const SCAFFOLDING_CONFIG_PATH = "res://addons/state_machine/resources/state_config.tres"
 		var state_config_res = ResourceLoader.load(SCAFFOLDING_CONFIG_PATH)
 		if not state_config_res:
-			state_config_res = preload("res://addons/statecafe/scripts/state_config.gd").new()
+			state_config_res = preload("res://addons/state_machine/scripts/state_config.gd").new()
 			var dir = SCAFFOLDING_CONFIG_PATH.get_base_dir()
 			if not DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(dir)):
 				DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(dir))
@@ -88,11 +88,11 @@ func _ensure_group(group_name: String) -> VBoxContainer:
 		content_container.add_child(group_panel)
 		group_panel.name = group_name
 
-		const SCAFFOLDING_CONFIG_PATH = "res://addons/statecafe/resources/state_config.tres"
+		const SCAFFOLDING_CONFIG_PATH = "res://addons/state_machine/resources/state_config.tres"
 		var state_config_res = ResourceLoader.load(SCAFFOLDING_CONFIG_PATH)
 
 		if not state_config_res:
-			state_config_res = preload("res://addons/statecafe/scripts/state_config.gd").new()
+			state_config_res = preload("res://addons/state_machine/scripts/state_config.gd").new()
 			var dir = SCAFFOLDING_CONFIG_PATH.get_base_dir()
 			if not DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(dir)):
 				DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(dir))

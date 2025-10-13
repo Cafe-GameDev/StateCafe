@@ -1,11 +1,11 @@
-# StateCafe ☕
+# StateMachine ☕
 
-[![Godot Asset Library](https://img.shields.io/badge/Godot_Asset_Library-StateCafe-478cbf?style=for-the-badge&logo=godot-engine)](https://godotengine.org/asset-library/asset/link-to-asset) <!-- Placeholder -->
+[![Godot Asset Library](https://img.shields.io/badge/Godot_Asset_Library-StateMachine-478cbf?style=for-the-badge&logo=godot-engine)](https://godotengine.org/asset-library/asset/link-to-asset) <!-- Placeholder -->
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-**StateCafe** é um framework de Máquina de Estados Paralela e em Camadas para Godot 4.x, projetado para ser modular, reutilizável e intuitivo.
+**StateMachine** é um framework de Máquina de Estados Paralela e em Camadas para Godot 4.x, projetado para ser modular, reutilizável e intuitivo.
 
-Cansado de máquinas de estado monolíticas e difíceis de gerenciar? O StateCafe introduz uma arquitetura onde comportamentos são `Resources` independentes, permitindo que você construa lógicas complexas de forma visual e organizada.
+Cansado de máquinas de estado monolíticas e difíceis de gerenciar? O StateMachine introduz uma arquitetura onde comportamentos são `Resources` independentes, permitindo que você construa lógicas complexas de forma visual e organizada.
 
 ---
 
@@ -23,7 +23,7 @@ Cansado de máquinas de estado monolíticas e difíceis de gerenciar? O StateCaf
 
 A documentação completa, com guias detalhados, tutoriais e a referência da API, pode ser encontrada no nosso site oficial:
 
-[https://www.cafegame.dev/cafeengine/statecafe](https://www.cafegame.dev/cafeengine/statecafe)
+[https://www.cafegame.dev/cafeengine/statemachine](https://www.cafegame.dev/cafeengine/statemachine)
 
 ---
 
@@ -36,12 +36,12 @@ Este plugin foi projetado especificamente para **Godot 4.5** e versões futuras.
 ## Instalação
 
 1.  **AssetLib (Recomendado):**
-    -   Procure por "StateCafe" na Godot Asset Library e instale o plugin.
+    -   Procure por "StateMachine" na Godot Asset Library e instale o plugin.
 2.  **Manual (GitHub):**
     -   Baixe o repositório.
-    -   Copie a pasta `addons/statecafe` para a pasta `addons/` do seu projeto.
+    -   Copie a pasta `addons/state_machine` para a pasta `addons/` do seu projeto.
 
-Após a instalação, vá em `Project -> Project Settings -> Plugins` e ative o plugin **StateCafe**.
+Após a instalação, vá em `Project -> Project Settings -> Plugins` e ative o plugin **StateMachine**.
 
 ---
 
@@ -57,7 +57,7 @@ Após a instalação, vá em `Project -> Project Settings -> Plugins` e ative o 
 
 ## Contribuição
 
-O StateCafe é um projeto open-source. Contribuições são bem-vindas! Por favor, leia nosso [guia de contribuição](CONTRIBUTING.md) para saber como reportar bugs, sugerir funcionalidades e submeter pull requests.
+O StateMachine é um projeto open-source. Contribuições são bem-vindas! Por favor, leia nosso [guia de contribuição](CONTRIBUTING.md) para saber como reportar bugs, sugerir funcionalidades e submeter pull requests.
 
 ## Licença
 

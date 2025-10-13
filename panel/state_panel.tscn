@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmb3ia3xlj3uy"]
 
-[ext_resource type="Script" uid="uid://cti2knpv118e2" path="res://addons/statecafe/panel/state_panel.gd" id="1_scaffold_gd"]
-[ext_resource type="Texture2D" uid="uid://dd2o48oqvi2og" path="res://addons/statecafe/icons/arrow-big-up-dash.svg" id="2_ck88h"]
-[ext_resource type="Texture2D" uid="uid://df2ofr4sabd76" path="res://addons/statecafe/icons/book-open-text.svg" id="4_u21qr"]
+[ext_resource type="Script" uid="uid://cti2knpv118e2" path="res://addons/state_machine/panel/state_panel.gd" id="1_scaffold_gd"]
+[ext_resource type="Texture2D" uid="uid://dd2o48oqvi2og" path="res://addons/state_machine/icons/arrow-big-up-dash.svg" id="2_ck88h"]
+[ext_resource type="Texture2D" uid="uid://df2ofr4sabd76" path="res://addons/state_machine/icons/book-open-text.svg" id="4_u21qr"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_2no5w"]
 color = Color(0.35686275, 0.5803922, 0.7764706, 1)
@@ -22,7 +22,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_2no5w")
 [node name="HeaderButton" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
-text = "StateCafe"
+text = "StateMachine"
 icon = ExtResource("2_ck88h")
 alignment = 0
 icon_alignment = 2

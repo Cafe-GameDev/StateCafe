@@ -7,10 +7,10 @@ class_name StatePanel
 @onready var save_feedback_label: Label = $CollapsibleContent/SaveFeedbackLabel
 @onready var save_feedback_timer: Timer = $CollapsibleContent/SaveFeedbackTimer
 
-const ARROW_BIG_DOWN_DASH = preload("res://addons/statecafe/icons/arrow-big-down-dash.svg")
-const ARROW_BIG_UP_DASH = preload("res://addons/statecafe/icons/arrow-big-up-dash.svg")
+const ARROW_BIG_DOWN_DASH = preload("res://addons/state_machine/icons/arrow-big-down-dash.svg")
+const ARROW_BIG_UP_DASH = preload("res://addons/state_machine/icons/arrow-big-up-dash.svg")
 
-@export var state_config: StateConfig = preload("res://addons/statecafe/resources/state_config.tres")
+@export var state_config: StateConfig = preload("res://addons/state_machine/resources/state_config.tres")
 
 var _is_expanded: bool = true
 var _expanded_height: float = 0.0
