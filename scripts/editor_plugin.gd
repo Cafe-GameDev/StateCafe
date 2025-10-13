@@ -20,14 +20,11 @@ func _enter_tree():
 		print("ERRO: " + error_message)
 		return
 
-	
-
 	if not ProjectSettings.has_setting("autoload/" + AUTOLOAD_NAME):
 
 		add_autoload_singleton(AUTOLOAD_NAME, AUTOLOAD_PATH)
 
 	
-
 	# Aguarda o CorePanel ser instanciado pelo CoreEngine
 
 	await get_tree().create_timer(0.1).timeout
@@ -36,24 +33,16 @@ func _enter_tree():
 
 		await get_tree().create_timer(0.1).timeout
 
-	
-
 	_create_plugin_panel()
 
 	_register_custom_types()
+
 func _exit_tree():
 	if ProjectSettings.has_setting("autoload/" + AUTOLOAD_NAME):
 		remove_autoload_singleton(AUTOLOAD_NAME)
 	
 	if is_instance_valid(group_panel):
 		group_panel.free()
-
-	if is_instance_valid(plugin_panel):
-		var content_container = plugin_panel.get_node_or_null("VBoxContainer")
-		if content_container and content_container.get_child_count() == 0:
-			if plugin_panel.get_parent() != null:
-				remove_control_from_docks(plugin_panel)
-			plugin_panel.free()
 	
 	_unregister_custom_types()
 
