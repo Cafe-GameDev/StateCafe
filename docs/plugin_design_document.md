@@ -52,7 +52,7 @@ O sistema é composto por três elementos centrais que trabalham em conjunto par
 ### 2.2. `StateBehavior` (A Sub-Máquina / Domínio Funcional)
 
 -   **Tipo:** `Resource`.
--   **Função:** Encapsula a lógica completa de um domínio funcional (Movimento, Combate, IA). É, na prática, uma máquina de estados autocontida que gerencia seus próprios **micro-estados** internamente (usando `Enums`, `Dictionaries`, etc.). Além disso, `StateBehavior`s podem exportar dicionários complexos para configurar detalhes específicos do estado (ex: `{"animation": "punch", "damage": 10}` para ataques, ou `{"speed": 150, "acceleration": 0.8}` para movimento). Futuramente, esses dicionários poderão ser substituídos por `Resource`s dedicados do plugin `DataCafe` para uma gestão de dados ainda mais robusta.
+-   **Função:** Encapsula a lógica completa de um domínio funcional (Movimento, Combate, IA). É, na prática, uma máquina de estados autocontida que gerencia seus próprios **micro-estados** internamente (usando `Enums`, `Dictionaries`, etc.). Além disso, `StateBehavior`s podem exportar dicionários complexos para configurar detalhes específicos do estado (ex: `{"animation": "punch", "damage": 10}` para ataques, ou `{"speed": 150, "acceleration": 0.8}` para movimento). Futuramente, esses dicionários poderão ser substituídos por `Resource`s dedicados do plugin `DataBehavior` para uma gestão de dados ainda mais robusta.
 -   **Comunicação (Saída):**
     -   `signal transition_requested(domain: StringName, next_behavior: Resource)`: Sinal para solicitar a troca do behavior ativo dentro de um domínio específico.
     -   Pode emitir outros sinais específicos de ação (ex: `sound_requested`, `effect_spawned`).
