@@ -8,7 +8,18 @@ const GROUP_SCENE_PATH = "res://addons/state_machine/panel/state_panel.tscn"
 var plugin_panel: ScrollContainer
 var group_panel: VBoxContainer
 
+const CORE_ENGINE_AUTOLOAD_NAME = "CoreEngine"
+const CORE_ENGINE_GITHUB_URL = "https://github.com/CafeGameDev/CafeEngine"
+
 func _enter_tree():
+	if not ProjectSettings.has_setting("autoload/" + CORE_ENGINE_AUTOLOAD_NAME):
+		var error_message = "O plugin StateMachine requer o plugin CoreEngine para funcionar corretamente. " \
+							+ "Por favor, certifique-se de que o CoreEngine está instalado e configurado como um Autoload com o nome '" + CORE_ENGINE_AUTOLOAD_NAME + "'. " \
+							+ "Você pode encontrar o CoreEngine em: " + CORE_ENGINE_GITHUB_URL
+		push_error(error_message)
+		print("ERRO: " + error_message)
+		return
+
 	if not ProjectSettings.has_setting("autoload/" + AUTOLOAD_NAME):
 		add_autoload_singleton(AUTOLOAD_NAME, AUTOLOAD_PATH)
 	
