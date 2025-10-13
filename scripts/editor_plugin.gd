@@ -20,12 +20,27 @@ func _enter_tree():
 		print("ERRO: " + error_message)
 		return
 
-	if not ProjectSettings.has_setting("autoload/" + AUTOLOAD_NAME):
-		add_autoload_singleton(AUTOLOAD_NAME, AUTOLOAD_PATH)
 	
-	_create_plugin_panel()
-	_register_custom_types()
 
+	if not ProjectSettings.has_setting("autoload/" + AUTOLOAD_NAME):
+
+		add_autoload_singleton(AUTOLOAD_NAME, AUTOLOAD_PATH)
+
+	
+
+	# Aguarda o CorePanel ser instanciado pelo CoreEngine
+
+	await get_tree().create_timer(0.1).timeout
+
+	while not CoreEngine.CorePanel:
+
+		await get_tree().create_timer(0.1).timeout
+
+	
+
+	_create_plugin_panel()
+
+	_register_custom_types()
 func _exit_tree():
 	if ProjectSettings.has_setting("autoload/" + AUTOLOAD_NAME):
 		remove_autoload_singleton(AUTOLOAD_NAME)
@@ -43,29 +58,10 @@ func _exit_tree():
 	_unregister_custom_types()
 
 func _create_plugin_panel():
-	plugin_panel = get_editor_interface().get_base_control().find_child("CafeEngine", true, false)
+	plugin_panel = get_editor_interface().get_base_control().find_child("CorePanel", true, false)
 	if plugin_panel:
 		_ensure_group("StateMachine")
 		return
-
-	plugin_panel = ScrollContainer.new()
-	plugin_panel.name = "CafeEngine"
-	plugin_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	plugin_panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	plugin_panel.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	plugin_panel.set_follow_focus(true)
-
-	var vbox_container = VBoxContainer.new()
-	vbox_container.name = "VBoxContainer"
-	vbox_container.set_v_size_flags(Control.SIZE_EXPAND_FILL)
-	vbox_container.set_h_size_flags(Control.SIZE_EXPAND_FILL)
-	vbox_container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	vbox_container.add_theme_constant_override("separation", 12)
-	
-	plugin_panel.add_child(vbox_container)
-
-	add_control_to_dock(DOCK_SLOT_RIGHT_UL, plugin_panel)
-	_ensure_group("StateMachine")
 
 func _ensure_group(group_name: String) -> VBoxContainer:
 	if not plugin_panel:
