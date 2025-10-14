@@ -81,10 +81,6 @@ item_6/text = "behaviors/state_behavior_vehicle.gd"
 item_7/text = "state_behavior.gd"
 item_8/text = "state_config.gd"
 
-[node name="HBoxContainer_ScriptContainer_HBoxContainer#RefreshScriptButton" type="Button" parent="."]
-layout_mode = 0
-text = "Atualizar"
-
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/CreateResourceButton" to="." method="_on_create_resource_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/RemoveResourceButton" to="." method="_on_remove_resource_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/EditResourceButton" to="." method="_on_edit_resource_button_pressed"]
