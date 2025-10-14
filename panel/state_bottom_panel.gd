@@ -18,20 +18,41 @@ func _ready():
 
 func _populate_item_list():
 	resource_item_list.clear()
-	var dir = DirAccess.open("res://addons/state_machine/resources/")
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
+	var resource_dir = DirAccess.open("res://addons/state_machine/resources/")
+	if resource_dir:
+		resource_dir.list_dir_begin()
+		var file_name = resource_dir.get_next()
 		while file_name != "":
 			if file_name.ends_with(".tres"):
 				resource_item_list.add_item(file_name)
-			file_name = dir.get_next()
+			file_name = resource_dir.get_next()
 	else:
 		push_error("Não foi possível abrir o diretório de recursos: res://addons/state_machine/resources/")
 
+	script_item_list.clear()
+	var script_dir = DirAccess.open("res://addons/state_machine/scripts/")
+	if script_dir:
+		script_dir.list_dir_begin()
+		var file_name = script_dir.get_next()
+		while file_name != "":
+			if file_name.ends_with(".gd"):
+				var script_path = "res://addons/state_machine/scripts/" + file_name
+				var script = load(script_path)
+				if script and script is Script and ClassDB.is_parent_class(script.get_instance_base_type(), "Resource"):
+					script_item_list.add_item(file_name)
+			file_name = script_dir.get_next()
+	else:
+		push_error("Não foi possível abrir o diretório de scripts: res://addons/state_machine/scripts/")
+
 func _on_create_resource_button_pressed():
+	var type_selection_modal = load("res://addons/state_machine/panel/state_resource_type_selection_modal.tscn").instantiate()
+	type_selection_modal.resource_type_selected.connect(_on_resource_type_selected)
+	get_tree().root.add_child(type_selection_modal)
+	type_selection_modal.popup_centered()
+
+func _on_resource_type_selected(type_name: String):
 	var file_dialog = FileDialog.new()
-	file_dialog.title = "Criar Novo DataResource"
+	file_dialog.title = "Criar Novo Resource de " + type_name
 	file_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	file_dialog.access = FileDialog.ACCESS_RESOURCES
 	file_dialog.current_path = "res://addons/state_machine/resources/"
@@ -41,7 +62,7 @@ func _on_create_resource_button_pressed():
 		if not save_path.ends_with(".tres"):
 			save_path += ".tres"
 		
-		var new_resource = Resource.new() 
+		var new_resource = ClassDB.instantiate(type_name)
 
 		var error = ResourceSaver.save(new_resource, save_path)
 		if error == OK:
@@ -83,12 +104,15 @@ func _on_edit_resource_button_pressed():
 		var resource_path = "res://addons/state_machine/resources/" + selected_item_name
 		var resource = ResourceLoader.load(resource_path)
 
-		if resource and resource.get_script() and resource.get_script() is Script:
-			EditorInterface.edit_resource(resource.get_script())
+		if resource:
+			var modal = load("res://addons/state_machine/panel/state_modal_panel.tscn").instantiate()
+			modal.set_resource(resource) # Assumindo que o modal tem um método set_resource
+			get_tree().root.add_child(modal)
+			modal.popup_centered()
 		else:
-			print("O recurso selecionado não possui um script associado ou o script não é válido.")
+			push_error("Não foi possível carregar o recurso: " + resource_path)
 	else:
-		print("Nenhum recurso selecionado para editar o script.")
+		print("Nenhum recurso selecionado para editar.")
 
 func _on_resource_item_list_item_activated(index: int):
 	var selected_item_name = resource_item_list.get_item_text(index)
@@ -125,15 +149,86 @@ func _get_drag_data(position: Vector2):
 
 
 func _on_create_script_button_pressed() -> void:
-	pass # Replace with function body.
+	var file_dialog = FileDialog.new()
+	file_dialog.title = "Criar Novo Script de StateBehavior"
+	file_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
+	file_dialog.access = FileDialog.ACCESS_RESOURCES
+	file_dialog.current_path = "res://addons/state_machine/scripts/"
+	file_dialog.add_filter("*.gd;GDScript File", "*.gd")
+	file_dialog.confirmed.connect(func():
+		var save_path = file_dialog.current_path
+		if not save_path.ends_with(".gd"):
+			save_path += ".gd"
+		
+		var script_template = """
+extends StateBehavior
+class_name NewStateBehavior
+
+func _init():
+	state_name = "NewStateBehavior"
+
+func _enter():
+	# Lógica de entrada do estado
+	pass
+
+func _exit():
+	# Lógica de saída do estado
+	pass
+
+func _process_state(delta: float):
+	# Lógica de processamento do estado
+	pass
+
+func _physics_process_state(delta: float):
+	# Lógica de processamento físico do estado
+	pass
+"""
+		var file = FileAccess.open(save_path, FileAccess.WRITE)
+		if file:
+			file.store_string(script_template)
+			file.close()
+			_populate_item_list()
+			EditorInterface.edit_resource(load(save_path))
+			print("Script criado: " + save_path)
+		else:
+			push_error("Erro ao criar o script: " + save_path)
+	)
+	get_tree().root.add_child(file_dialog)
+	file_dialog.popup_centered()
 
 
 func _on_remove_script_button_pressed() -> void:
-	pass # Replace with function body.
+	var selected_items = script_item_list.get_selected_items()
+	if selected_items.size() > 0:
+		var selected_index = selected_items[0]
+		var selected_item_name = script_item_list.get_item_text(selected_index)
+		var script_path = "res://addons/state_machine/scripts/" + selected_item_name
+
+		var dialog = ConfirmationDialog.new()
+		dialog.dialog_text = "Tem certeza que deseja remover o script '" + selected_item_name + "'?"
+		dialog.confirmed.connect(func():
+			var error = DirAccess.remove_absolute(script_path)
+			if error == OK:
+				_populate_item_list()
+				print("Script removido: " + script_path)
+			else:
+				push_error("Erro ao remover o script: " + script_path + " (Erro: " + str(error) + ")")
+		)
+		get_tree().root.add_child(dialog)
+		dialog.popup_centered()
+	else:
+		print("Nenhum script selecionado para remover.")
 
 
 func _on_edit_script_button_pressed() -> void:
-	pass # Replace with function body.
+	var selected_items = script_item_list.get_selected_items()
+	if selected_items.size() > 0:
+		var selected_index = selected_items[0]
+		var selected_item_name = script_item_list.get_item_text(selected_index)
+		var script_path = "res://addons/state_machine/scripts/" + selected_item_name
+		EditorInterface.edit_resource(load(script_path))
+	else:
+		print("Nenhum script selecionado para editar.")
 
 
 func _on_script_item_list_item_selected(index: int) -> void:
@@ -149,4 +244,6 @@ func _on_resource_item_list_item_clicked(index: int, at_position: Vector2, mouse
 
 
 func _on_script_item_list_item_activated(index: int) -> void:
-	pass # Replace with function body.
+	var selected_item_name = script_item_list.get_item_text(index)
+	var script_path = "res://addons/state_machine/scripts/" + selected_item_name
+	EditorInterface.edit_resource(load(script_path))
