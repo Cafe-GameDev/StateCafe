@@ -17,6 +17,9 @@ func _ready():
 	_populate_item_list()
 
 func _populate_item_list():
+	if Engine.is_editor_hint():
+		EditorInterface.get_resource_filesystem().scan()
+	
 	resource_item_list.clear()
 	var resource_files = _get_files_recursive("res://addons/state_machine/resources/", ".tres")
 	for file_path in resource_files:
