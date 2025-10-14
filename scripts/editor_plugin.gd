@@ -78,15 +78,15 @@ func _ensure_group(group_name: String) -> VBoxContainer:
 
 	group_panel = content_container.find_child(group_name, false)
 	if group_panel:
-		const SCAFFOLDING_CONFIG_PATH = "res://addons/state_machine/resources/state_config.tres"
-		var state_config_res = ResourceLoader.load(SCAFFOLDING_CONFIG_PATH)
+		const STATE_CONFIG_PATH = "res://addons/state_machine/resources/state_config.tres"
+		var state_config_res = ResourceLoader.load(STATE_CONFIG_PATH)
 		if not state_config_res:
 			state_config_res = preload("res://addons/state_machine/scripts/state_config.gd").new()
-			var dir = SCAFFOLDING_CONFIG_PATH.get_base_dir()
+			var dir = STATE_CONFIG_PATH.get_base_dir()
 			if not DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(dir)):
 				DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(dir))
 			
-			var error = ResourceSaver.save(state_config_res, SCAFFOLDING_CONFIG_PATH)
+			var error = ResourceSaver.save(state_config_res, STATE_CONFIG_PATH)
 			if error != OK:
 				push_error("Failed to create and save a new StateConfig resource: %s" % error)
 		group_panel.set_state_config(state_config_res)
@@ -98,16 +98,16 @@ func _ensure_group(group_name: String) -> VBoxContainer:
 		content_container.add_child(group_panel)
 		group_panel.name = group_name
 
-		const SCAFFOLDING_CONFIG_PATH = "res://addons/state_machine/resources/state_config.tres"
-		var state_config_res = ResourceLoader.load(SCAFFOLDING_CONFIG_PATH)
+		const STATE_CONFIG_PATH = "res://addons/state_machine/resources/state_config.tres"
+		var state_config_res = ResourceLoader.load(STATE_CONFIG_PATH)
 
 		if not state_config_res:
 			state_config_res = preload("res://addons/state_machine/scripts/state_config.gd").new()
-			var dir = SCAFFOLDING_CONFIG_PATH.get_base_dir()
+			var dir = STATE_CONFIG_PATH.get_base_dir()
 			if not DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(dir)):
 				DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(dir))
 			
-			var error = ResourceSaver.save(state_config_res, SCAFFOLDING_CONFIG_PATH)
+			var error = ResourceSaver.save(state_config_res, STATE_CONFIG_PATH)
 			if error != OK:
 				push_error("Failed to create and save a new StateConfig resource: %s" % error)
 		
