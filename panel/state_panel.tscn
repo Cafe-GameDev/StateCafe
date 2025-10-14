@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmb3ia3xlj3uy"]
 
 [ext_resource type="Script" uid="uid://cti2knpv118e2" path="res://addons/state_machine/panel/state_panel.gd" id="1_scaffold_gd"]
-[ext_resource type="Texture2D" uid="uid://dd2o48oqvi2og" path="res://addons/state_machine/icons/arrow-big-up-dash.svg" id="2_ck88h"]
+[ext_resource type="Texture2D" uid="uid://db5257d01rp3u" path="res://addons/state_machine/icons/arrow-big-down-dash.svg" id="2_yrpvg"]
 [ext_resource type="Texture2D" uid="uid://df2ofr4sabd76" path="res://addons/state_machine/icons/book-open-text.svg" id="4_u21qr"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_2no5w"]
@@ -9,9 +9,11 @@ color = Color(0.35686275, 0.5803922, 0.7764706, 1)
 thickness = 3
 
 [node name="StatePanel" type="VBoxContainer"]
-custom_minimum_size = Vector2(340, 0)
-offset_right = 340.0
-offset_bottom = 46.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 0
 script = ExtResource("1_scaffold_gd")
 
@@ -23,11 +25,12 @@ theme_override_styles/separator = SubResource("StyleBoxLine_2no5w")
 custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 text = "StateMachine"
-icon = ExtResource("2_ck88h")
+icon = ExtResource("2_yrpvg")
 alignment = 0
 icon_alignment = 2
 
 [node name="CollapsibleContent" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CollapsibleContent"]
