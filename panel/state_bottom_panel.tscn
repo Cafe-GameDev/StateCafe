@@ -21,11 +21,11 @@ layout_mode = 2
 
 [node name="CreateButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Criar StateBehavior"
+text = "Criar"
 
 [node name="RemoveButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Remover StateBehavior"
+text = "Remover"
 
 [node name="EditScriptButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
