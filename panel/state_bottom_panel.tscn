@@ -2,7 +2,5 @@
 
 [ext_resource type="Script" uid="uid://bfoflf4yadorr" path="res://addons/state_machine/panel/state_bottom_panel.gd" id="1_f5xsq"]
 
-[node name="StateBottomPanel" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="StateBottomPanel" type="VBoxContainer"]
 script = ExtResource("1_f5xsq")
