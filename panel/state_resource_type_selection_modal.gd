@@ -7,15 +7,26 @@ signal resource_type_selected(type_name)
 @onready var item_list: ItemList = $VBoxContainer/ItemList
 
 var base_resource_type: String = "StateBehavior"
+var script_path_prefix: String = "res://addons/state_machine/scripts/"
 
 func _ready():
 	_populate_item_list()
 
 func _populate_item_list():
 	item_list.clear()
-	var classes = ClassDB.get_known_classes_from_base(base_resource_type)
-	for class_name in classes:
-		item_list.add_item(class_name)
+	var dir = DirAccess.open(script_path_prefix)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.ends_with(".gd"):
+				var script_path = script_path_prefix + file_name
+				var script = load(script_path)
+				if script and script is Script and ClassDB.is_parent_class(script.get_instance_base_type(), base_resource_type):
+					item_list.add_item(script.resource_path.get_file().get_basename()) # Adiciona o nome da classe/arquivo
+			file_name = dir.get_next()
+	else:
+		push_error("Não foi possível abrir o diretório de scripts: " + script_path_prefix)
 
 func _on_confirmed():
 	var selected_items = item_list.get_selected_items()

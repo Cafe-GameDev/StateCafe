@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/state_machine/panel/state_resource_type_selection_modal.gd" id="1_script"]
 
 [node name="StateResourceTypeSelectionModal" type="ConfirmationDialog"]
-title = "Selecionar Tipo de Resource"
+title = "Selecionar Tipo de StateBehavior"
 size_flags_horizontal = 4
 size_flags_vertical = 4
 dialog_text = "Selecione o tipo de StateBehavior para criar:"

@@ -45,14 +45,8 @@ func _populate_item_list():
 		push_error("Não foi possível abrir o diretório de scripts: res://addons/state_machine/scripts/")
 
 func _on_create_resource_button_pressed():
-	var type_selection_modal = load("res://addons/state_machine/panel/state_resource_type_selection_modal.tscn").instantiate()
-	type_selection_modal.resource_type_selected.connect(_on_resource_type_selected)
-	get_tree().root.add_child(type_selection_modal)
-	type_selection_modal.popup_centered()
-
-func _on_resource_type_selected(type_name: String):
 	var file_dialog = FileDialog.new()
-	file_dialog.title = "Criar Novo Resource de " + type_name
+	file_dialog.title = "Criar Novo Resource"
 	file_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	file_dialog.access = FileDialog.ACCESS_RESOURCES
 	file_dialog.current_path = "res://addons/state_machine/resources/"
@@ -62,7 +56,7 @@ func _on_resource_type_selected(type_name: String):
 		if not save_path.ends_with(".tres"):
 			save_path += ".tres"
 		
-		var new_resource = ClassDB.instantiate(type_name)
+		var new_resource = Resource.new() 
 
 		var error = ResourceSaver.save(new_resource, save_path)
 		if error == OK:
