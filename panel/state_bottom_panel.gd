@@ -2,46 +2,45 @@
 extends Control
 class_name StateBottomPanel
 
-@onready var create_button = $"VBoxContainer/HBoxContainer/CreateButton"
-@onready var remove_button = $"VBoxContainer/HBoxContainer/RemoveButton"
-@onready var edit_script_button = $"VBoxContainer/HBoxContainer/EditScriptButton"
-@onready var item_list = $"VBoxContainer/ItemList"
+@onready var create_resource_button: Button = $HBoxContainer/ResourceContainer/HBoxContainer/CreateResourceButton
+@onready var remove_resource_button: Button = $HBoxContainer/ResourceContainer/HBoxContainer/RemoveResourceButton
+@onready var edit_resource_button: Button = $HBoxContainer/ResourceContainer/HBoxContainer/EditResourceButton
+@onready var resource_item_list: ItemList = $HBoxContainer/ResourceContainer/ResourceItemList
+
+@onready var create_script_button: Button = $HBoxContainer/ScriptContainer/HBoxContainer/CreateScriptButton
+@onready var remove_script_button: Button = $HBoxContainer/ScriptContainer/HBoxContainer/RemoveScriptButton
+@onready var edit_script_button: Button = $HBoxContainer/ScriptContainer/HBoxContainer/EditScriptButton
+@onready var script_item_list: ItemList = $HBoxContainer/ScriptContainer/ScriptItemList
+
 
 func _ready():
-	if Engine.is_editor_hint():
-		create_button.pressed.connect(_on_create_button_pressed)
-		remove_button.pressed.connect(_on_remove_button_pressed)
-		edit_script_button.pressed.connect(_on_edit_script_button_pressed)
-		item_list.item_activated.connect(_on_item_list_item_activated)
-		
-		_populate_item_list()
+	_populate_item_list()
 
 func _populate_item_list():
-	item_list.clear()
-	var dir = DirAccess.open("res://addons/state_machine/resources/state_behaviors/")
+	resource_item_list.clear()
+	var dir = DirAccess.open("res://addons/state_machine/resources/")
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name.ends_with(".tres"):
-				item_list.add_item(file_name)
+				resource_item_list.add_item(file_name)
 			file_name = dir.get_next()
 	else:
-		push_error("Não foi possível abrir o diretório de recursos: res://addons/state_machine/resources/state_behaviors/")
+		push_error("Não foi possível abrir o diretório de recursos: res://addons/state_machine/resources/")
 
-func _on_create_button_pressed():
+func _on_create_resource_button_pressed():
 	var file_dialog = FileDialog.new()
-	file_dialog.title = "Criar Novo StateBehavior"
+	file_dialog.title = "Criar Novo DataResource"
 	file_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	file_dialog.access = FileDialog.ACCESS_RESOURCES
-	file_dialog.current_path = "res://addons/state_machine/resources/state_behaviors/"
+	file_dialog.current_path = "res://addons/state_machine/resources/"
 	file_dialog.add_filter("*.tres;Resource File", "*.tres")
 	file_dialog.confirmed.connect(func():
 		var save_path = file_dialog.current_path
 		if not save_path.ends_with(".tres"):
 			save_path += ".tres"
 		
-		# TODO: Substituir Resource.new() por uma instância de StateBehavior
 		var new_resource = Resource.new() 
 
 		var error = ResourceSaver.save(new_resource, save_path)
@@ -54,12 +53,12 @@ func _on_create_button_pressed():
 	get_tree().root.add_child(file_dialog)
 	file_dialog.popup_centered()
 
-func _on_remove_button_pressed():
-	var selected_items = item_list.get_selected_items()
+func _on_remove_resource_button_pressed():
+	var selected_items = resource_item_list.get_selected_items()
 	if selected_items.size() > 0:
 		var selected_index = selected_items[0]
-		var selected_item_name = item_list.get_item_text(selected_index)
-		var resource_path = "res://addons/state_machine/resources/state_behaviors/" + selected_item_name
+		var selected_item_name = resource_item_list.get_item_text(selected_index)
+		var resource_path = "res://addons/state_machine/resources/" + selected_item_name
 
 		var dialog = ConfirmationDialog.new()
 		dialog.dialog_text = "Tem certeza que deseja remover o recurso '" + selected_item_name + "'?"
@@ -76,12 +75,12 @@ func _on_remove_button_pressed():
 	else:
 		print("Nenhum recurso selecionado para remover.")
 
-func _on_edit_script_button_pressed():
-	var selected_items = item_list.get_selected_items()
+func _on_edit_resource_button_pressed():
+	var selected_items = resource_item_list.get_selected_items()
 	if selected_items.size() > 0:
 		var selected_index = selected_items[0]
-		var selected_item_name = item_list.get_item_text(selected_index)
-		var resource_path = "res://addons/state_machine/resources/state_behaviors/" + selected_item_name
+		var selected_item_name = resource_item_list.get_item_text(selected_index)
+		var resource_path = "res://addons/state_machine/resources/" + selected_item_name
 		var resource = ResourceLoader.load(resource_path)
 
 		if resource and resource.get_script() and resource.get_script() is Script:
@@ -91,9 +90,9 @@ func _on_edit_script_button_pressed():
 	else:
 		print("Nenhum recurso selecionado para editar o script.")
 
-func _on_item_list_item_activated(index: int):
-	var selected_item_name = item_list.get_item_text(index)
-	var resource_path = "res://addons/state_machine/resources/state_behaviors/" + selected_item_name
+func _on_resource_item_list_item_activated(index: int):
+	var selected_item_name = resource_item_list.get_item_text(index)
+	var resource_path = "res://addons/state_machine/resources/" + selected_item_name
 	var resource = ResourceLoader.load(resource_path)
 	if resource:
 		EditorInterface.edit_resource(resource)
@@ -101,11 +100,11 @@ func _on_item_list_item_activated(index: int):
 		push_error("Não foi possível carregar o recurso: " + resource_path)
 
 func _get_drag_data(position: Vector2):
-	var selected_items = item_list.get_selected_items()
+	var selected_items = resource_item_list.get_selected_items()
 	if selected_items.size() > 0:
 		var selected_index = selected_items[0]
-		var selected_item_name = item_list.get_item_text(selected_index)
-		var resource_path = "res://addons/state_machine/resources/state_behaviors/" + selected_item_name
+		var selected_item_name = resource_item_list.get_item_text(selected_index)
+		var resource_path = "res://addons/state_machine/resources/" + selected_item_name
 		
 		var preview = TextureRect.new()
 		preview.texture = EditorInterface.get_base_control().get_theme_icon("Resource", "EditorIcons")
@@ -124,3 +123,30 @@ func _get_drag_data(position: Vector2):
 		return drag_data
 	return null
 
+
+func _on_create_script_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_remove_script_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_edit_script_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_script_item_list_item_selected(index: int) -> void:
+	pass # Replace with function body.
+
+
+func _on_resource_item_list_item_selected(index: int) -> void:
+	pass # Replace with function body.
+
+
+func _on_resource_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	pass # Replace with function body.
+
+
+func _on_script_item_list_item_activated(index: int) -> void:
+	pass # Replace with function body.
