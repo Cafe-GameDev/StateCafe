@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="StateConfig" load_steps=2 format=3 uid="uid://cj8gn8k3l3p8w"]
-
-[ext_resource type="Script" uid="uid://crnvr6cq8xahy" path="res://addons/state_machine/scripts/state_config.gd" id="1_vutl7"]
-
-[resource]
-script = ExtResource("1_vutl7")
-is_panel_expanded = false
-metadata/_custom_type_script = "uid://crnvr6cq8xahy"
