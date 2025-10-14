@@ -139,32 +139,8 @@ func _on_create_script_button_pressed() -> void:
 		if not save_path.ends_with(".gd"):
 			save_path += ".gd"
 		
-		var script_template = """
-extends StateBehavior
-class_name NewStateBehavior
-
-func _init():
-	state_name = "NewStateBehavior"
-
-func _enter():
-	# Lógica de entrada do estado
-	pass
-
-func _exit():
-	# Lógica de saída do estado
-	pass
-
-func _process_state(delta: float):
-	# Lógica de processamento do estado
-	pass
-
-func _physics_process_state(delta: float):
-	# Lógica de processamento físico do estado
-	pass
-"""
 		var file = FileAccess.open(save_path, FileAccess.WRITE)
 		if file:
-			file.store_string(script_template)
 			file.close()
 			_populate_item_list()
 			EditorInterface.edit_resource(load(save_path))
