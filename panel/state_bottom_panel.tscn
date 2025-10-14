@@ -2,5 +2,35 @@
 
 [ext_resource type="Script" uid="uid://bfoflf4yadorr" path="res://addons/state_machine/panel/state_bottom_panel.gd" id="1_f5xsq"]
 
-[node name="StateBottomPanel" type="VBoxContainer"]
+[node name="StateBottomPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_f5xsq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CreateButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Criar StateBehavior"
+
+[node name="RemoveButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Remover StateBehavior"
+
+[node name="EditScriptButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Editar Script"
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
