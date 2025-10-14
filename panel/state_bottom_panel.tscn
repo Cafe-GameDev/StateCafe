@@ -38,6 +38,10 @@ text = "Remover"
 layout_mode = 2
 text = "Editar Resource"
 
+[node name="RefreshButton" type="Button" parent="HBoxContainer/ResourceContainer/HBoxContainer"]
+layout_mode = 2
+text = "Refresh"
+
 [node name="ResourceItemList" type="ItemList" parent="HBoxContainer/ResourceContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -73,6 +77,7 @@ item_1/text = "state_config.gd"
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/CreateResourceButton" to="." method="_on_create_resource_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/RemoveResourceButton" to="." method="_on_remove_resource_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/EditResourceButton" to="." method="_on_edit_resource_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/RefreshButton" to="." method="_on_refresh_button_pressed"]
 [connection signal="item_activated" from="HBoxContainer/ResourceContainer/ResourceItemList" to="." method="_on_resource_item_list_item_activated"]
 [connection signal="pressed" from="HBoxContainer/ScriptContainer/HBoxContainer/CreateScriptButton" to="." method="_on_create_script_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ScriptContainer/HBoxContainer/RemoveScriptButton" to="." method="_on_remove_script_button_pressed"]
