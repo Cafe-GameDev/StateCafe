@@ -227,3 +227,7 @@ func _get_files_recursive(path: String, extension: String) -> Array[String]:
 				files.append(path.path_join(file_name))
 			file_name = dir.get_next()
 	return files
+
+
+func _on_refresh_button_pressed() -> void:
+	pass # Replace with function body.

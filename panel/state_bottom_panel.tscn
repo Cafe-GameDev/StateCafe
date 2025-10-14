@@ -70,9 +70,20 @@ text = "Editar Script"
 [node name="ScriptItemList" type="ItemList" parent="HBoxContainer/ScriptContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-item_count = 2
-item_0/text = "state_behavior.gd"
-item_1/text = "state_config.gd"
+item_count = 9
+item_0/text = "behaviors/game_state_behavior.gd"
+item_1/text = "behaviors/state_behavior_ai.gd"
+item_2/text = "behaviors/state_behavior_attack.gd"
+item_3/text = "behaviors/state_behavior_dialogue.gd"
+item_4/text = "behaviors/state_behavior_interact.gd"
+item_5/text = "behaviors/state_behavior_move.gd"
+item_6/text = "behaviors/state_behavior_vehicle.gd"
+item_7/text = "state_behavior.gd"
+item_8/text = "state_config.gd"
+
+[node name="HBoxContainer_ScriptContainer_HBoxContainer#RefreshScriptButton" type="Button" parent="."]
+layout_mode = 0
+text = "Atualizar"
 
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/CreateResourceButton" to="." method="_on_create_resource_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/RemoveResourceButton" to="." method="_on_remove_resource_button_pressed"]
