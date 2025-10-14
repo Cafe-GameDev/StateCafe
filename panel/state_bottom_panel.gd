@@ -18,31 +18,16 @@ func _ready():
 
 func _populate_item_list():
 	resource_item_list.clear()
-	var resource_dir = DirAccess.open("res://addons/state_machine/resources/")
-	if resource_dir:
-		resource_dir.list_dir_begin()
-		var file_name = resource_dir.get_next()
-		while file_name != "":
-			if file_name.ends_with(".tres"):
-				resource_item_list.add_item(file_name)
-			file_name = resource_dir.get_next()
-	else:
-		push_error("Não foi possível abrir o diretório de recursos: res://addons/state_machine/resources/")
+	var resource_files = _get_files_recursive("res://addons/state_machine/resources/", ".tres")
+	for file_path in resource_files:
+		resource_item_list.add_item(file_path.replace("res://addons/state_machine/resources/", ""))
 
 	script_item_list.clear()
-	var script_dir = DirAccess.open("res://addons/state_machine/scripts/")
-	if script_dir:
-		script_dir.list_dir_begin()
-		var file_name = script_dir.get_next()
-		while file_name != "":
-			if file_name.ends_with(".gd"):
-				var script_path = "res://addons/state_machine/scripts/" + file_name
-				var script = load(script_path)
-				if script and script is Script and ClassDB.is_parent_class(script.get_instance_base_type(), "Resource"):
-					script_item_list.add_item(file_name)
-			file_name = script_dir.get_next()
-	else:
-		push_error("Não foi possível abrir o diretório de scripts: res://addons/state_machine/scripts/")
+	var script_files = _get_files_recursive("res://addons/state_machine/scripts/", ".gd")
+	for script_path in script_files:
+		var script = load(script_path)
+		if script and script is Script and ClassDB.is_parent_class(script.get_instance_base_type(), "Resource"):
+			script_item_list.add_item(script_path.replace("res://addons/state_machine/scripts/", ""))
 
 func _on_create_resource_button_pressed():
 	var file_dialog = FileDialog.new()
@@ -228,3 +213,17 @@ func _on_script_item_list_item_activated(index: int) -> void:
 	var selected_item_name = script_item_list.get_item_text(index)
 	var script_path = "res://addons/state_machine/scripts/" + selected_item_name
 	EditorInterface.edit_resource(load(script_path))
+
+func _get_files_recursive(path: String, extension: String) -> Array[String]:
+	var files: Array[String] = []
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				files.append_array(_get_files_recursive(path.path_join(file_name), extension))
+			elif file_name.ends_with(extension):
+				files.append(path.path_join(file_name))
+			file_name = dir.get_next()
+	return files
