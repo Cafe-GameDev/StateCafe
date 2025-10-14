@@ -38,11 +38,11 @@ func _on_create_resource_button_pressed():
 	file_dialog.add_filter("*.tres;Resource File", "*.tres")
 	file_dialog.confirmed.connect(func():
 		var save_path = file_dialog.current_path
+		
 		if not save_path.ends_with(".tres"):
 			save_path += ".tres"
 		
 		var new_resource = Resource.new() 
-
 		var error = ResourceSaver.save(new_resource, save_path)
 		if error == OK:
 			_populate_item_list()
@@ -59,7 +59,6 @@ func _on_remove_resource_button_pressed():
 		var selected_index = selected_items[0]
 		var selected_item_name = resource_item_list.get_item_text(selected_index)
 		var resource_path = "res://addons/state_machine/resources/" + selected_item_name
-
 		var dialog = ConfirmationDialog.new()
 		dialog.dialog_text = "Tem certeza que deseja remover o recurso '" + selected_item_name + "'?"
 		dialog.confirmed.connect(func():
@@ -126,7 +125,6 @@ func _get_drag_data(position: Vector2):
 		return drag_data
 	return null
 
-
 func _on_create_script_button_pressed() -> void:
 	var file_dialog = FileDialog.new()
 	file_dialog.title = "Criar Novo Script de StateBehavior"
@@ -139,6 +137,10 @@ func _on_create_script_button_pressed() -> void:
 		if not save_path.ends_with(".gd"):
 			save_path += ".gd"
 		
+		var script_template = """
+extends StateBehavior
+class_name NewStateBehavior
+"""
 		var file = FileAccess.open(save_path, FileAccess.WRITE)
 		if file:
 			file.close()
@@ -150,7 +152,6 @@ func _on_create_script_button_pressed() -> void:
 	)
 	get_tree().root.add_child(file_dialog)
 	file_dialog.popup_centered()
-
 
 func _on_remove_script_button_pressed() -> void:
 	var selected_items = script_item_list.get_selected_items()
@@ -173,7 +174,6 @@ func _on_remove_script_button_pressed() -> void:
 		dialog.popup_centered()
 	else:
 		print("Nenhum script selecionado para remover.")
-
 
 func _on_edit_script_button_pressed() -> void:
 	var selected_items = script_item_list.get_selected_items()
@@ -204,6 +204,5 @@ func _get_files_recursive(path: String, extension: String) -> Array[String]:
 			file_name = dir.get_next()
 	return files
 
-
 func _on_refresh_button_pressed() -> void:
-	pass # Replace with function body.
+	_populate_item_list()
