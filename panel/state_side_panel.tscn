@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmb3ia3xlj3uy"]
+[gd_scene load_steps=5 format=3 uid="uid://by28v2souocjn"]
 
-[ext_resource type="Script" uid="uid://cti2knpv118e2" path="res://addons/state_machine/panel/state_panel.gd" id="1_scaffold_gd"]
+[ext_resource type="Script" uid="uid://b02kor83r8q7a" path="res://addons/state_machine/panel/state_side_panel.gd" id="1_xxxx"]
 [ext_resource type="Texture2D" uid="uid://db5257d01rp3u" path="res://addons/state_machine/icons/arrow-big-down-dash.svg" id="2_yrpvg"]
 [ext_resource type="Texture2D" uid="uid://df2ofr4sabd76" path="res://addons/state_machine/icons/book-open-text.svg" id="4_u21qr"]
 
@@ -8,14 +8,14 @@
 color = Color(0.35686275, 0.5803922, 0.7764706, 1)
 thickness = 3
 
-[node name="StatePanel" type="VBoxContainer"]
+[node name="StateSidePanel" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
-script = ExtResource("1_scaffold_gd")
+script = ExtResource("1_xxxx")
 
 [node name="HSeparator" type="HSeparator" parent="."]
 layout_mode = 2

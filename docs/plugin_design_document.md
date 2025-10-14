@@ -67,7 +67,7 @@ O sistema é composto por três elementos centrais que trabalham em conjunto par
 
 -   **Tipo:** `Node` (Singleton).
 -   **Função:** Orquestrador de alto nível com um duplo papel.
--   **Papel 1 (Observador de Entidades):** Mantém um registro de todos os `StateComponent`s ativos na cena para depuração através do `StatePanel`.
+-   **Papel 1 (Observador de Entidades):** Mantém um registro de todos os `StateComponent`s ativos na cena para depuração através do `StateSidePanel`.
 -   **Papel 2 (Executor de Estados Globais):** Funciona como sua própria máquina de estados para gerenciar o fluxo geral do jogo (menus, níveis, pausa), utilizando `StateBehavior`s de alto nível como `GameStateScene`.
     -   **`GameStateScene`**: Um `StateBehavior` especializado para gerenciar transições entre cenas completas do jogo. Possui uma propriedade `@export var scene: PackedScene` e sua lógica `enter` lida com `change_scene_to_packed`.
 
@@ -90,8 +90,8 @@ addons/state_machine/
 │       ├── state_behavior_attack.gd
 │       └── game_state_scene.gd
 ├── panel/
-│   ├── state_panel.gd
-│   ├── state_panel.tscn
+│   ├── state_side_panel.gd
+│   ├── state_side_panel.tscn
 │   └── state_modal.tscn # Para edição detalhada e criação de estados
 ├── scripts/
 │   ├── editor_plugin.gd
@@ -154,7 +154,7 @@ A interface do StateMachine é dividida em componentes modulares para uma experi
 
 -   **`CafePanel` (O Host da Dock):** Um contêiner simples que fica na dock lateral do editor. Sua única função é abrigar os painéis dos diferentes plugins da suíte CafeEngine.
 
--   **`StatePanel` (O Navegador / Visualizador):** O painel principal do StateMachine, filho do `CafePanel`. Sua responsabilidade é a **visualização e navegação** da máquina de estados.
+-   **`StateSidePanel` (O Navegador / Visualizador):** O painel principal do StateMachine, filho do `CafePanel`. Sua responsabilidade é a **visualização e navegação** da máquina de estados.
     -   **Duplo Propósito:**
         1.  **Micro-Visão (Nível de Entidade):** Exibe um editor de grafos (`GraphEdit`) para a máquina de estados de um `StateComponent` selecionado na cena.
         2.  **Macro-Visão (Nível de Jogo):** Exibe o grafo da máquina de estados global, gerenciada pelo autoload `StateMachine`.
@@ -165,7 +165,7 @@ A interface do StateMachine é dividida em componentes modulares para uma experi
         -   **Toolbox de Estados:** Área lateral listando `StateBehavior`s disponíveis para arrastar e criar novos estados.
         -   **Integração com Inspector:** Selecionar um nó no grafo exibe suas propriedades no Inspector principal do Godot.
 
--   **`StateModal` (O Editor Pop-up):** Uma janela modal que surge para tarefas de edição detalhadas, evitando sobrecarregar o `StatePanel`. Exemplos de uso:
+-   **`StateModal` (O Editor Pop-up):** Uma janela modal que surge para tarefas de edição detalhadas, evitando sobrecarregar o `StateSidePanel`. Exemplos de uso:
     -   **Editor de Transições:** Ao clicar em uma conexão no grafo, um `StateModal` abre para configurar as condições daquela transição.
     -   **Criador de Estado:** Um `StateModal` pode guiar o usuário na criação de um novo `StateBehavior` a partir de um template.
 
@@ -202,7 +202,7 @@ A interface do StateMachine é dividida em componentes modulares para uma experi
 
 ### Fase 4: Painel de UI e Ferramentas de Depuração
 
--   [ ] **Criar `state_panel.tscn` e `state_panel.gd`:** Desenvolver a UI principal do plugin, que será docada no editor.
+-   [ ] **Criar `state_side_panel.tscn` e `state_side_panel.gd`:** Desenvolver a UI principal do plugin, que será docada no editor.
 -   [ ] **Implementar `StateModal`:** Criar a cena `state_modal.tscn` para pop-ups de edição.
 -   [ ] **Funcionalidades do Painel:**
     -   Visualizar a máquina de estados do `StateComponent` selecionado (Micro-Visão).

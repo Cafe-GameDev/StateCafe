@@ -1,6 +1,6 @@
 @tool
 extends VBoxContainer
-class_name StatePanel
+class_name StateSidePanel
 
 @onready var header_button: Button = $HeaderButton
 @onready var collapsible_content: VBoxContainer = $CollapsibleContent

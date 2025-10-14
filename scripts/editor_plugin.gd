@@ -3,7 +3,7 @@ extends EditorPlugin
 
 const AUTOLOAD_NAME = "StateMachine"
 const AUTOLOAD_PATH = "res://addons/state_machine/components/state_machine.gd"
-const GROUP_SCENE_PATH = "res://addons/state_machine/panel/state_panel.tscn"
+const GROUP_SCENE_PATH = "res://addons/state_machine/panel/state_side_panel.tscn"
 const BOTTOM_PANEL_SCENE_PATH = "res://addons/state_machine/panel/state_bottom_panel.tscn"
 
 var plugin_panel: ScrollContainer

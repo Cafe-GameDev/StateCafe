@@ -1,12 +1,12 @@
-# Planejamento do StatePanel: Gerenciador Visual de Estados
+# Planejamento do StateSidePanel: Gerenciador Visual de Estados
 
-Este documento detalha a visão e as funcionalidades do `StatePanel`, a interface gráfica central do plugin StateMachine. O painel servirá como uma ferramenta de duplo propósito: para visualizar e gerenciar tanto as máquinas de estado de **entidades individuais** quanto a máquina de estado **global do jogo**.
+Este documento detalha a visão e as funcionalidades do `StateSidePanel`, a interface gráfica central do plugin StateMachine. O painel servirá como uma ferramenta de duplo propósito: para visualizar e gerenciar tanto as máquinas de estado de **entidades individuais** quanto a máquina de estado **global do jogo**.
 
 ---
 
 ## 1. O Duplo Propósito do Painel
 
-O `StatePanel` terá dois contextos de operação:
+O `StateSidePanel` terá dois contextos de operação:
 
 1.  **Micro-Visão (Nível de Entidade):**
     -   **Gatilho:** Quando o desenvolvedor seleciona um nó na cena que contém um `StateComponent`.
@@ -39,7 +39,7 @@ Para gerenciar o fluxo de cenas, precisamos de um novo tipo de `StateBehavior`. 
 
 ---
 
-## 3. Funcionalidades e Layout do `StatePanel`
+## 3. Funcionalidades e Layout do `StateSidePanel`
 
 O painel será projetado para ser uma ferramenta visual poderosa, inspirada em Blueprints.
 
@@ -68,10 +68,10 @@ O painel será projetado para ser uma ferramenta visual poderosa, inspirada em B
 
 1.  O dev cria três `Resources` do tipo `GameStateScene`: `MainMenu.tres`, `Level1.tres`, e `GameOver.tres`.
 2.  Em cada um, ele arrasta a cena correspondente (`main_menu.tscn`, etc.) para a propriedade `Scene`.
-3.  No `StatePanel`, ele seleciona o contexto "StateMachine Global".
+3.  No `StateSidePanel`, ele seleciona o contexto "StateMachine Global".
 4.  Ele arrasta os três `.tres` para o grafo.
 5.  Ele conecta `MainMenu` a `Level1` (a transição seria acionada por um sinal global como `start_game_pressed`).
 6.  Ele conecta `Level1` a `GameOver` (a transição seria acionada por `player_died`).
 7.  O `StateMachine` (autoload) é configurado para iniciar com o estado `MainMenu.tres`.
 
-Com isso, o `StatePanel` se torna o centro de comando para toda a lógica de fluxo do jogo, de forma visual e intuitiva.
+Com isso, o `StateSidePanel` se torna o centro de comando para toda a lógica de fluxo do jogo, de forma visual e intuitiva.

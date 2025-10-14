@@ -71,7 +71,7 @@ signal state_entered(state: Resource)
 signal state_exited(state: Resource)
 ```
 
-Esses sinais podem alimentar o **state_panel.gd** em tempo real, sem depender de polling.
+Esses sinais podem alimentar o **state_side_panel.gd** em tempo real, sem depender de polling.
 
 ---
 

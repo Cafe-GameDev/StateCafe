@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpcjd76at8vsh"]
+
+[ext_resource type="Script" uid="uid://dml8b8q2gxtj6" path="res://addons/state_machine/panel/state_modal_panel.gd" id="1_q120t"]
+
+[node name="StateModalPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_q120t")

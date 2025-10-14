@@ -54,8 +54,8 @@ addons/state_machine/
 ├── resources/
 │   └── state_config.tres
 ├── panel/
-│   ├── state_panel.gd
-│   └── state_panel.tscn
+│   ├── state_side_panel.gd
+│   └── state_side_panel.tscn
 ├── scripts/
 │   ├── editor_plugin.gd
 │   ├── state_machine.gd
@@ -99,7 +99,7 @@ addons/state_machine/
 
 ### Fase 4: Painel de UI e Ferramentas de Depuração
 
--   [ ] **Criar `state_panel.tscn` e `state_panel.gd`:** Desenvolver a UI principal do plugin, que será docada no editor.
+-   [ ] **Criar `state_side_panel.tscn` e `state_side_panel.gd`:** Desenvolver a UI principal do plugin, que será docada no editor.
 -   [ ] **Funcionalidades do Painel:**
     -   Visualizar a máquina de estados do `StateComponent` selecionado.
     -   Mostrar o estado ativo em tempo real durante a execução do jogo.

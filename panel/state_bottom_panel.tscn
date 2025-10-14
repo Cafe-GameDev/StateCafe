@@ -1,17 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://your_unique_id_here"]
+[gd_scene load_steps=2 format=3 uid="uid://bi0ehvu241u7p"]
 
-[ext_resource type="Script" path="res://addons/state_machine/panel/state_bottom_panel.gd" id="1_bottom_panel_script"]
+[ext_resource type="Script" uid="uid://bfoflf4yadorr" path="res://addons/state_machine/panel/state_bottom_panel.gd" id="1_f5xsq"]
 
-[node name="StateMachineBottomPanel" type="VBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_bottom_panel_script")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 2
-text = "StateMachine Bottom Panel"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="StateBottomPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_f5xsq")
