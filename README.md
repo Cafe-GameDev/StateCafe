@@ -1,7 +1,7 @@
 # StateMachine ☕
 
-[![StateMachine](https://img.shields.io/badge/Godot_Asset_Library-StateMachine-478cbf?style=for-the-badge&logo=godot-engine)](https://godotengine.org/asset-library/asset/link-to-asset)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![DataBehavior](https://img.shields.io/badge/StateMachine-v1.0.0-478cbf?style=for-the-badge)](https://www.cafegame.dev/pt-BR/cafeengine)
+[![License](https://img.shields.io/badge/License-MIT-f1c40f?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 **StateMachine** é um framework de Máquina de Estados Paralela e em Camadas para Godot 4.x, projetado para ser modular, reutilizável e intuitivo.
 
