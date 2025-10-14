@@ -66,14 +66,15 @@ text = "Editar Script"
 [node name="ScriptItemList" type="ItemList" parent="HBoxContainer/ScriptContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+item_count = 2
+item_0/text = "state_behavior.gd"
+item_1/text = "state_config.gd"
 
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/CreateResourceButton" to="." method="_on_create_resource_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/RemoveResourceButton" to="." method="_on_remove_resource_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ResourceContainer/HBoxContainer/EditResourceButton" to="." method="_on_edit_resource_button_pressed"]
 [connection signal="item_activated" from="HBoxContainer/ResourceContainer/ResourceItemList" to="." method="_on_resource_item_list_item_activated"]
-[connection signal="item_selected" from="HBoxContainer/ResourceContainer/ResourceItemList" to="." method="_on_resource_item_list_item_selected"]
 [connection signal="pressed" from="HBoxContainer/ScriptContainer/HBoxContainer/CreateScriptButton" to="." method="_on_create_script_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ScriptContainer/HBoxContainer/RemoveScriptButton" to="." method="_on_remove_script_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ScriptContainer/HBoxContainer/EditScriptButton" to="." method="_on_edit_script_button_pressed"]
 [connection signal="item_activated" from="HBoxContainer/ScriptContainer/ScriptItemList" to="." method="_on_script_item_list_item_activated"]
-[connection signal="item_selected" from="HBoxContainer/ScriptContainer/ScriptItemList" to="." method="_on_script_item_list_item_selected"]

@@ -224,19 +224,6 @@ func _on_edit_script_button_pressed() -> void:
 	else:
 		print("Nenhum script selecionado para editar.")
 
-
-func _on_script_item_list_item_selected(index: int) -> void:
-	pass # Replace with function body.
-
-
-func _on_resource_item_list_item_selected(index: int) -> void:
-	pass # Replace with function body.
-
-
-func _on_resource_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
-	pass # Replace with function body.
-
-
 func _on_script_item_list_item_activated(index: int) -> void:
 	var selected_item_name = script_item_list.get_item_text(index)
 	var script_path = "res://addons/state_machine/scripts/" + selected_item_name
