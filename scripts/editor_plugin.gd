@@ -4,9 +4,11 @@ extends EditorPlugin
 const AUTOLOAD_NAME = "StateMachine"
 const AUTOLOAD_PATH = "res://addons/state_machine/components/state_machine.gd"
 const GROUP_SCENE_PATH = "res://addons/state_machine/panel/state_panel.tscn"
+const BOTTOM_PANEL_SCENE_PATH = "res://addons/state_machine/panel/state_bottom_panel.tscn"
 
 var plugin_panel: ScrollContainer
 var group_panel: VBoxContainer
+var bottom_panel_instance: Control
 
 const CORE_ENGINE_AUTOLOAD_NAME = "CoreEngine"
 const CORE_ENGINE_GITHUB_URL = "https://github.com/CafeGameDev/CafeEngine"
@@ -35,6 +37,14 @@ func _enter_tree():
 
 	_create_plugin_panel()
 
+	# Adiciona o painel inferior
+	var bottom_panel_scene = load(BOTTOM_PANEL_SCENE_PATH)
+	if bottom_panel_scene and bottom_panel_scene is PackedScene:
+		bottom_panel_instance = bottom_panel_scene.instantiate()
+		add_control_to_bottom_panel(bottom_panel_instance, "StateMachine")
+	else:
+		push_error("Could not load StateMachine bottom panel scene.")
+
 	_register_custom_types()
 
 func _exit_tree():
@@ -43,6 +53,10 @@ func _exit_tree():
 	
 	if is_instance_valid(group_panel):
 		group_panel.free()
+
+	if is_instance_valid(bottom_panel_instance):
+		remove_control_from_bottom_panel(bottom_panel_instance)
+		bottom_panel_instance.free()
 	
 	_unregister_custom_types()
 
