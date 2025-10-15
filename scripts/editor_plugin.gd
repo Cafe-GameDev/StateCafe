@@ -10,8 +10,8 @@ var plugin_panel: ScrollContainer
 var group_panel: VBoxContainer
 var bottom_panel_instance: Control
 
-const CORE_ENGINE_AUTOLOAD_NAME = "CoreEngine"
-const CORE_ENGINE_GITHUB_URL = "https://github.com/CafeGameDev/CafeEngine"
+const RESOURCE_EDITOR_AUTOLOAD_NAME = "ResourceEditor"
+const RESOURCE_EDITOR_GITHUB_URL = "https://github.com/CafeGameDev/CafeEngine"
 
 func _enable_plugin() -> void:
 	if not ProjectSettings.has_setting("autoload/" + AUTOLOAD_NAME):
@@ -22,19 +22,19 @@ func _disable_plugin() -> void:
 		remove_autoload_singleton(AUTOLOAD_NAME)
 
 func _enter_tree():
-	if not ProjectSettings.has_setting("autoload/" + CORE_ENGINE_AUTOLOAD_NAME):
-		var error_message = "O plugin StateMachine requer o plugin CoreEngine para funcionar corretamente. " \
-							+ "Por favor, certifique-se de que o CoreEngine está instalado e configurado como um Autoload com o nome '" + CORE_ENGINE_AUTOLOAD_NAME + "'. " \
-							+ "Você pode encontrar o CoreEngine em: " + CORE_ENGINE_GITHUB_URL
+	if not ProjectSettings.has_setting("autoload/" + RESOURCE_EDITOR_AUTOLOAD_NAME):
+		var error_message = "O plugin StateMachine requer o plugin ResourceEditor para funcionar corretamente. " \
+							+ "Por favor, certifique-se de que o ResourceEditor está instalado e configurado como um Autoload com o nome '" + RESOURCE_EDITOR_AUTOLOAD_NAME + "'. " \
+							+ "Você pode encontrar o ResourceEditor em: " + RESOURCE_EDITOR_GITHUB_URL
 		push_error(error_message)
 		print("ERRO: " + error_message)
 		return
 
-	# Aguarda o CorePanel ser instanciado pelo CoreEngine
+	# Aguarda o ResourcePanel ser instanciado pelo ResourceEditor
 
 	await get_tree().create_timer(0.1).timeout
 
-	while not CoreEngine.CorePanel:
+	while not ResourceEditor.ResourcePanel:
 
 		await get_tree().create_timer(0.1).timeout
 
@@ -61,7 +61,7 @@ func _exit_tree():
 	_unregister_custom_types()
 
 func _create_plugin_panel():
-	plugin_panel = get_editor_interface().get_base_control().find_child("CorePanel", true, false)
+	plugin_panel = get_editor_interface().get_base_control().find_child("ResourcePanel", true, false)
 	if plugin_panel:
 		_ensure_group("StateMachine")
 		return
