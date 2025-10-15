@@ -30,11 +30,11 @@ func _enter_tree():
 		print("ERRO: " + error_message)
 		return
 
-	# Aguarda o ResourcePanel ser instanciado pelo ResourceEditor
+	# Aguarda o CafeSidePanel ser instanciado pelo ResourceEditor
 
 	await get_tree().create_timer(0.1).timeout
 
-	while not ResourceEditor.ResourcePanel:
+	while not ResourceEditor.CafeSidePanel:
 
 		await get_tree().create_timer(0.1).timeout
 
@@ -61,7 +61,7 @@ func _exit_tree():
 	_unregister_custom_types()
 
 func _create_plugin_panel():
-	plugin_panel = get_editor_interface().get_base_control().find_child("ResourcePanel", true, false)
+	plugin_panel = get_editor_interface().get_base_control().find_child("CafeSidePanel", true, false)
 	if plugin_panel:
 		_ensure_group("StateMachine")
 		return
